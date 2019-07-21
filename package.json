@@ -1,0 +1,26 @@
+{
+  "name": "intro_react_16",
+  "version": "1.0.0",
+  "description": "intro_react_16",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.{js,html}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karinfdez/intro_react_16.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karinfdez/intro_react_16/issues"
+  },
+  "homepage": "https://github.com/karinfdez/intro_react_16#readme",
+  "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "prettier": "^1.18.2"
+  }
+}
