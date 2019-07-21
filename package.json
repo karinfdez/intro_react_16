@@ -4,6 +4,7 @@
   "description": "intro_react_16",
   "main": "index.js",
   "scripts": {
+    "dev": "parcel src/index.html",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "format": "prettier --write \"src/**/*.{js,html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -23,6 +24,7 @@
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2"
   }
 }
