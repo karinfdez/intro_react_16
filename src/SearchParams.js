@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropDown";
-
 const SearchParams = () => {
   //location = current state
   //setLocation = updated function for a particular piece of state(location, in this example)
@@ -9,6 +8,13 @@ const SearchParams = () => {
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropDown] = useDropdown("animal", "dog", ANIMALS);
   const [breed, BreedDropDown, setBreed] = useDropdown("breed", "", breeds);
+  const [pets, setPets] = useState([]);
+
+  async function requestPets() {
+    const animals = await pet.animals({ location, breed, type: animal });
+    console.log("animal", animals);
+    setPets(animals || []);
+  }
   //useEffect takes place of several cicles hooks => componentDidMount, componentWillUnmount, componentDidUpdate)
   useEffect(() => {
     //In order to clean previous list(e.x. list of dog's breeds, to then change to cat's breeds)
@@ -22,7 +28,12 @@ const SearchParams = () => {
   //To run only once when it first renders, pass [](where it depends on nothing)
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         useDropDown
         <label htmlFor="location">
           Location
