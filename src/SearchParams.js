@@ -9,17 +9,17 @@ const SearchParams = () => {
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropDown] = useDropdown("animal", "dog", ANIMALS);
   const [breed, BreedDropDown, setBreed] = useDropdown("breed", "", breeds);
-  //useEffect takes place of several clicles hooks
-  //(componentDidMount, componentWillUnmount, componentDidUpdate)
+  //useEffect takes place of several cicles hooks => componentDidMount, componentWillUnmount, componentDidUpdate)
   useEffect(() => {
+    //In order to clean previous list(e.x. list of dog's breeds, to then change to cat's breeds)
     setBreeds([]);
     setBreed("");
-    pet.breeds(animal).then(({ breeds }) => {
-      const breedStrings = breeds.map(({ name }) => name);
+    pet.breeds(animal).then(({ breeds: apiBreeds }) => {
+      const breedStrings = apiBreeds.map(({ name }) => name);
       setBreeds(breedStrings);
     }, console.error);
-  }, [setBreeds, setBreed, animal]); //If any of these parameters changes, rerun useEffect after comp renders. Order of parameters don't matter
-
+  }, [setBreeds, setBreed, animal]); //If any of these dependencies changes, rerun useEffect after comp renders. Order dependencies don't matter
+  //To run only once when it first renders, pass [](where it depends on nothing)
   return (
     <div className="search-params">
       <form>
