@@ -6,6 +6,8 @@ const SearchParams = () => {
   //setLocation = updated function for a particular piece of state(location, in this example)
   const [location, setLocation] = useState("Seattle, WA");
   const [animal, setAnimal] = useState("dog");
+  const [breed, setBreed] = useState("");
+  const [breeds, setBreeds] = useState([]);
 
   return (
     <div className="search-params">
@@ -32,6 +34,24 @@ const SearchParams = () => {
             {ANIMALS.map(animal => (
               <option key={animal} value={animal}>
                 {animal}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="breed">
+          Breed
+          <select
+            id="breed"
+            value={breed}
+            onChange={e => setBreed(e.target.value)}
+            onBlur={e => setBreed(e.target.value)}
+            disabled={breeds.length === 0} //Disable select when breeds.length is 0
+          >
+            <option>All</option>
+            {/*() -> Implicit return.It's like saying {return ....}*/}
+            {breeds.map(breed => (
+              <option key={breed} value={breed}>
+                {breed}
               </option>
             ))}
           </select>
