@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropDown";
 import Results from "./Results";
+
 const SearchParams = () => {
   //location = current state
   //setLocation = updated function for a particular piece of state(location, in this example)
@@ -37,7 +38,6 @@ const SearchParams = () => {
           requestPets();
         }}
       >
-        useDropDown
         <label htmlFor="location">
           Location
           <input
