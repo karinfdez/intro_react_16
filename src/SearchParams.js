@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropDown";
+import Results from "./Results";
 const SearchParams = () => {
   //location = current state
   //setLocation = updated function for a particular piece of state(location, in this example)
@@ -9,10 +10,12 @@ const SearchParams = () => {
   const [animal, AnimalDropDown] = useDropdown("animal", "dog", ANIMALS);
   const [breed, BreedDropDown, setBreed] = useDropdown("breed", "", breeds);
   const [pets, setPets] = useState([]);
-
   async function requestPets() {
-    const animals = await pet.animals({ location, breed, type: animal });
-    console.log("animal", animals);
+    const { animals } = await pet.animals({
+      location,
+      breed,
+      type: animal
+    });
     setPets(animals || []);
   }
   //useEffect takes place of several cicles hooks => componentDidMount, componentWillUnmount, componentDidUpdate)
@@ -48,6 +51,7 @@ const SearchParams = () => {
         <BreedDropDown />
         <button>Submit</button>
       </form>
+      <Results pets={pets} />
     </div>
   );
 };
