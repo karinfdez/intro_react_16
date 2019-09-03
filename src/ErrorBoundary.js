@@ -11,6 +11,7 @@ class ErrorBoundary extends Component {
     };
   }
 
+  //getDerivedStateFromError and componentDidCatch --> Can only be used with class components, not hooks
   //getDerivedStateFromError and componentDidCatch functions -->   These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
   //getDerivedStateFromError it's called during the "render" phase
   static getDerivedStateFromError() {
@@ -24,7 +25,7 @@ class ErrorBoundary extends Component {
     console.error("ErrorBoundary caught an error", error, info);
   }
 
-  //Is invoked immediately after updating occurs.
+  //Is invoked everytime a props or state changes.
   //This method is not called for the initial render.
   componentDidUpdate() {
     if (this.state.hasError) {
